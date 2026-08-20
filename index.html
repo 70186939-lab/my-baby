@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOONA 🤍 | The Cinematic Birthday Universe</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            background: linear-gradient(135deg, #0d0614 0%, #1a0b2e 50%, #05020a 100%); 
+            color: #fbfbf9; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+        }
+        .multi-bg {
+            background: radial-gradient(circle at 15% 15%, rgba(184, 41, 255, 0.15) 0%, transparent 45%),
+                        radial-gradient(circle at 85% 85%, rgba(255, 42, 109, 0.15) 0%, transparent 45%),
+                        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 60%),
+                        #0a0510;
+        }
+        .glass-card { 
+            background: rgba(25, 18, 38, 0.8); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.12); 
+        }
+        .rose-glow { box-shadow: 0 15px 50px -10px rgba(255, 42, 109, 0.25); }
+        .purple-glow { box-shadow: 0 15px 50px -10px rgba(184, 41, 255, 0.25); }
+        
+        /* NO ZOOM / PROPER FIT FOR IMAGES */
+        .fitted-image {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            transition: transform 0.5s ease;
+        }
+        .card-hover { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .card-hover:hover { transform: translateY(-4px); border-color: rgba(255, 42, 109, 0.4); box-shadow: 0 25px 60px -12px rgba(255, 42, 109, 0.35); }
+        .card-hover:hover .fitted-image { transform: scale(1.02); }
+    </style>
+</head>
+<body class="multi-bg text-[#fbfbf9] selection:bg-[#ff2a6d] selection:text-white">
+
+    <!-- INTRO SCREEN -->
+    <div id="intro-screen" class="fixed inset-0 bg-[#07030d] flex flex-col items-center justify-center z-50 px-6 transition-opacity duration-1000 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2a103d] via-[#07030d] to-[#07030d]">
+        <div id="intro-text" class="text-center">
+            <p id="step-msg" class="text-2xl md:text-3xl font-serif text-[#ffd700] tracking-wide transition-all duration-700">Hey...</p>
+            <div id="enter-box" class="hidden mt-6 flex flex-col items-center">
+                <span class="text-[#ff2a6d] text-xs uppercase tracking-[0.4em] mb-3">✨ Special Birthday Edition ✨</span>
+                <h1 class="text-5xl md:text-8xl font-serif tracking-[0.15em] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#ffd700] to-[#ff2a6d] drop-shadow-lg">MOONA</h1>
+                <p class="text-[#d1c7e0] text-sm md:text-base tracking-wider mt-4 max-w-md">A universe filled with endless love, gorgeous memories, and warm hugs crafted just for you. 🤍</p>
+                <button onclick="startExperience()" class="mt-10 px-8 py-4 border border-[#ff2a6d] text-white hover:bg-gradient-to-r hover:from-[#ff2a6d] hover:to-[#b829ff] transition-all duration-500 text-xs uppercase tracking-[0.3em] font-medium bg-white/10 rounded-full cursor-pointer shadow-[0_0_35px_rgba(255,42,109,0.5)]">
+                    ENTER THE UNIVERSE →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+        
+        <!-- HERO SECTION -->
+        <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0510] via-[#0a0510]/60 to-transparent z-10"></div>
+                <img src="moona-01.jpg" alt="Moona Background" class="w-full h-full object-cover filter brightness-[0.45] scale-105">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#ff2a6d]/20 via-transparent to-[#b829ff]/20 z-10 pointer-events-none"></div>
+            <div class="relative z-20 text-center px-6 max-w-2xl mx-auto flex flex-col items-center">
+                <span class="text-[#ffd700] text-xs uppercase tracking-[0.4em] mb-4 font-light drop-shadow">✨ HAPPY BIRTHDAY MY QUEEN ✨</span>
+                <h1 class="text-6xl md:text-8xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#fbfbf9] to-[#ff2a6d] tracking-[0.1em] drop-shadow-[0_10px_25px_rgba(255,42,109,0.5)]">MOONA 🤍</h1>
+                <p class="text-[#e2daf0] text-base md:text-lg tracking-widest mt-4 font-light drop-shadow">Sending you a million warm hugs and endless kisses on your special day.</p>
+                <a href="#story-section" class="mt-10 inline-block px-8 py-4 bg-white/10 hover:bg-[#ff2a6d] text-[#fbfbf9] border border-white/20 hover:border-[#ff2a6d] transition-all duration-500 text-xs uppercase tracking-[0.3em] rounded-full backdrop-blur-md shadow-lg">BEGIN THE JOURNEY ↓</a>
+            </div>
+        </section>
+
+        <!-- INTRODUCTORY CARDS SECTION -->
+        <section class="py-20 px-5 max-w-5xl mx-auto">
+            <div class="text-center mb-12 space-y-3">
+                <span class="text-[#ffd700] text-xs uppercase tracking-[0.3em] font-mono">✨ CELEBRATING YOU ✨</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white tracking-wide">WHY YOU ARE EXTRAORDINARY</h2>
+                <p class="text-[#c5b5d9] text-sm max-w-lg mx-auto">A quick look at the things that make you the most amazing person in my world.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-3xl rose-glow card-hover space-y-3">
+                    <div class="text-3xl">💖</div>
+                    <h3 class="text-xl font-serif text-white">Magnetic Smile</h3>
+                    <p class="text-xs text-[#c5b5d9] leading-relaxed">Your laughter and gorgeous smile have the power to instantly brighten even the darkest and most exhausting days.</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl purple-glow card-hover space-y-3">
+                    <div class="text-3xl">✨</div>
+                    <h3 class="text-xl font-serif text-white">Pure Grace</h3>
+                    <p class="text-xs text-[#c5b5d9] leading-relaxed">The way you carry yourself with absolute elegance and unmatched confidence is truly breathtaking in every single way.</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl rose-glow card-hover space-y-3">
+                    <div class="text-3xl">🤍</div>
+                    <h3 class="text-xl font-serif text-white">Endless Magic</h3>
+                    <p class="text-xs text-[#c5b5d9] leading-relaxed">From your cute little tantrums to your sweet affectionate heart, everything about you is uniquely perfect.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIAL DUA SECTION -->
+        <section class="py-12 px-5 max-w-3xl mx-auto">
+            <div class="glass-card p-8 md:p-10 rounded-3xl purple-glow text-center space-y-4 relative card-hover">
+                <span class="text-[#ffd700] text-xs uppercase tracking-[0.3em] font-mono">🤲 A SPECIAL PRAYER FOR YOU 🤲</span>
+                <h3 class="text-2xl md:text-3xl font-serif text-white">Meri Dil Ki Dua</h3>
+                <p class="text-[#e2daf0] font-serif text-base md:text-lg leading-relaxed italic">
+                    "Allah tala tujhe hamesha hasta muskurata rakhey, teri zindagi ko khushiyon se bhar dey, aur tere har ek maqsad mein tujhe kamyaabi ata farmaye. Tumhein kisi ki nazar na lage, meri jaan! Ameen. 🤍✨"
+                </p>
+            </div>
+        </section>
+
+        <!-- SEQUENTIAL PHOTO STORY (Images Fitted Without Harsh Zoom) -->
+        <section id="story-section" class="py-20 px-5 max-w-5xl mx-auto space-y-16">
+            <div class="text-center space-y-2">
+                <span class="text-[#ff2a6d] text-xs tracking-[0.3em] uppercase font-mono">CHAPTERS OF YOU</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white tracking-wide">MOMENTS FILLED WITH LOVE</h2>
+                <p class="text-[#c5b5d9] text-xs">Scroll down slowly to experience every memory and message...</p>
+            </div>
+
+            <!-- Photo 1 -->
+            <div class="glass-card rounded-3xl overflow-hidden rose-glow card-hover p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-01.jpg" alt="Moona 1" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ff2a6d] font-mono text-xs font-semibold">01 / 09 🫂 💋</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">That Mesmerizing Smile</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Meray jaan, jab tum hasti ho na, toh dil karta hai yahin ruk jaaun. Sending you a warm, tight hug and a sweet forehead kiss right now! 🤍</p>
+                </div>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="glass-card rounded-3xl overflow-hidden purple-glow card-hover p-6 md:p-8 flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-02.jpg" alt="Moona 2" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#b829ff] font-mono text-xs font-semibold">02 / 09 ✨ 💋</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Main Character Energy</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Absolute royalty! No matter where you are, you shine brightest. Sending you a massive bear hug for being the coolest girl ever. 🔥</p>
+                </div>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="glass-card rounded-3xl overflow-hidden rose-glow card-hover p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-03.jpg" alt="Moona 3" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ff2a6d] font-mono text-xs font-semibold">03 / 09 🤍 🫂</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Pure Elegance</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">The way you carry your grace is breathtaking. A soft cheek kiss and a loving hug just for you because you look stunning here! ✨</p>
+                </div>
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="glass-card rounded-3xl overflow-hidden purple-glow card-hover p-6 md:p-8 flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-04.jpg" alt="Moona 4" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#b829ff] font-mono text-xs font-semibold">04 / 09 👀 💋</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Your Gorgeous Eyes</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">In aankhon mein doob jane ka dil karta hai. Sending you endless hugs and kisses, meri pyari Moona! You mean the world to me. 🤍</p>
+                </div>
+            </div>
+
+            <!-- Photo 5 -->
+            <div class="glass-card rounded-3xl overflow-hidden rose-glow card-hover p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-05.jpg" alt="Moona 5" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ff2a6d] font-mono text-xs font-semibold">05 / 09 👑 🫂</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Unstoppable & Ambitious</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">I love your passion and fire. You inspire me every single day. Sending you a proud hug and a sweet victory kiss! 💪🤍</p>
+                </div>
+            </div>
+
+            <!-- Photo 6 -->
+            <div class="glass-card rounded-3xl overflow-hidden purple-glow card-hover p-6 md:p-8 flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-06.jpg" alt="Moona 6" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#b829ff] font-mono text-xs font-semibold">06 / 09 😂 💋</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Your Cute & Chaotic Side</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Your cute little tantrums and sweet moods are my absolute favorite weakness. A tight hug to calm you down and lots of kisses! 🤍</p>
+                </div>
+            </div>
+
+            <!-- Photo 7 -->
+            <div class="glass-card rounded-3xl overflow-hidden rose-glow card-hover p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-07.jpg" alt="Moona 7" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ff2a6d] font-mono text-xs font-semibold">07 / 09 🛡️ 🫂</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">My Safe Place</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Whenever life gets heavy, your presence is my shelter. Wrapping you in the tightest, warmest virtual hug right now. 🫂✨</p>
+                </div>
+            </div>
+
+            <!-- Photo 8 -->
+            <div class="glass-card rounded-3xl overflow-hidden purple-glow card-hover p-6 md:p-8 flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-08.jpg" alt="Moona 8" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#b829ff] font-mono text-xs font-semibold">08 / 09 ✨ 💋</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Absolute Perfection</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Unfair kitni pyaari ho yaar! Sending you a surprise hug and a warm kiss on your cheek because you're simply wonderful. 🤍</p>
+                </div>
+            </div>
+
+            <!-- Photo 9 -->
+            <div class="glass-card rounded-3xl overflow-hidden rose-glow card-hover p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="moona-09.jpg" alt="Moona 9" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ff2a6d] font-mono text-xs font-semibold">09 / 09 🤍 ♾️</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">My Forever Favorite</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Happy Birthday to my entire universe, my safe haven, and my favorite human. Sending you endless hugs and kisses today and forever! 🫂💋🤍</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- BONUS SECRET SECTIONS (SEPARATED WITH HOT CONTEXT) -->
+        <section class="py-20 px-5 max-w-5xl mx-auto space-y-16 border-t border-white/10">
+            <div class="text-center space-y-2">
+                <span class="text-[#ffd700] text-xs tracking-[0.3em] uppercase font-mono">⚠️ EXCLUSIVE BONUS CHAPTERS ⚠️</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white tracking-wide">SPECIAL SURPRISE MOMENTS</h2>
+                <p class="text-[#c5b5d9] text-xs">A little extra dose of love, magic, and hot romance...</p>
+            </div>
+
+            <!-- Bonus Pic 1 -->
+            <div class="glass-card rounded-3xl overflow-hidden rose-glow card-hover p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="https://plus.unsplash.com/premium_photo-1661317239187-44d7ef54f05a?fm=jpg&q=60&w=3000&auto=format&fit=crop" alt="Bonus Moment 1" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ffd700] font-mono text-xs font-semibold">BONUS 01 / 02 🤍 🫂</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">Meray Dil Ki Dhadkan</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">Tum sirf meri jaan nahi ho, meri poori duniya ho. Tumhare sath bitaya gaya har lamha ek khwab jaisa lagta hai. Sending you tight hugs and endless warmth! 🔥🤍</p>
+                </div>
+            </div>
+
+            <!-- Bonus Pic 2 -->
+            <div class="glass-card rounded-3xl overflow-hidden purple-glow card-hover p-6 md:p-8 flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+                <div class="w-full md:w-1/2 bg-black/40 p-4 rounded-2xl flex items-center justify-center">
+                    <img src="https://thumbs.dreamstime.com/b/passionate-man-kissing-neck-sexy-passionate-men-kissing-neck-sexy-women-grey-stock-image-236292291.jpg" alt="Bonus Moment 2" class="fitted-image rounded-xl">
+                </div>
+                <div class="w-full md:w-1/2 space-y-3 text-left">
+                    <span class="text-[#ffd700] font-mono text-xs font-semibold">BONUS 02 / 02 ✨ 💋</span>
+                    <h3 class="text-2xl md:text-3xl font-serif text-white">My Gorgeous Forever Girl</h3>
+                    <p class="text-[#d1c7e0] text-sm md:text-base leading-relaxed">You look breathtakingly hot and gorgeous! Dil karta hai tumhe hamesha apni baahon mein chupa kar rakhun. Happy Birthday to my absolute queen! 👑💋</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-16 text-center px-5 relative border-t border-white/10">
+            <div class="max-w-xl mx-auto space-y-4">
+                <h2 class="text-3xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#ffd700] to-[#ff2a6d] tracking-[0.15em]">HAPPY BIRTHDAY, MOONA 🤍</h2>
+                <p class="text-[#c5b5d9] text-xs tracking-[0.2em] font-light">Made with extreme effort, intense love, hugs, kisses, and magic.</p>
+                <p class="text-white font-serif italic text-sm pt-2">— Yours, and only yours, always 🫂💋🤍</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JAVASCRIPT FOR INTRO -->
+    <script>
+        const messages = ["Hey...", "Yes, you.", "The gorgeous girl reading this."];
+        let msgIdx = 0;
+        const msgEl = document.getElementById("step-msg");
+
+        const timer = setInterval(() => {
+            msgIdx++;
+            if (msgIdx < messages.length) {
+                msgEl.style.opacity = 0;
+                setTimeout(() => {
+                    msgEl.innerText = messages[msgIdx];
+                    msgEl.style.opacity = 1;
+                }, 300);
+            } else {
+                clearInterval(timer);
+                msgEl.style.opacity = 0;
+                setTimeout(() => {
+                    msgEl.style.display = "none";
+                    document.getElementById("enter-box").classList.remove("hidden");
+                }, 500);
+            }
+        }, 2500);
+
+        function startExperience() {
+            const intro = document.getElementById("intro-screen");
+            const main = document.getElementById("main-content");
+            intro.style.opacity = 0;
+            setTimeout(() => {
+                intro.style.display = "none";
+                main.classList.remove("hidden");
+                main.style.opacity = 1;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
