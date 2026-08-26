@@ -324,6 +324,79 @@
                 main.style.opacity = 1;
             }, 1000);
         }
+        
     </script>
+    <!-- Final Cute & Premium Circular Music Button -->
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 99999999; background: transparent;">
+    
+    <!-- Hidden Local Audio Backend -->
+    <audio id="my-hidden-audio" loop preload="auto">
+        <source src="./song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Cute Circular Floating Button -->
+    <button id="vibrant-music-btn" onclick="toggleVibrantMusic()" style="
+        /* Premium Metallic/Holographic Gradient */
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #f68787 100%);
+        border: none;
+        width: 60px; /* Perfect small size */
+        height: 60px; /* Perfect small size */
+        border-radius: 50%; /* Perfectly circular */
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(253, 160, 133, 0.7), 0 0 10px rgba(246, 211, 101, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Subtle breathing animation */
+        animation: pulse-glow 3s infinite;
+    " onmouseover="this.style.transform='scale(1.15) rotate(10deg)'; this.style.boxShadow='0 10px 25px rgba(253, 160, 133, 0.9), 0 0 15px rgba(246, 211, 101, 0.8)';"
+       onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 6px 15px rgba(253, 160, 133, 0.7), 0 0 10px rgba(246, 115, 115, 0.5)';">
+        
+        <!-- Cute Music Note Icon -->
+        <span id="btn-icon" style="font-size: 28px; color: white; transition: transform 0.3s ease;">♪</span>
+    </button>
+
+    <!-- Premium Animation & Effects -->
+    <style>
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 6px 15px rgba(253, 160, 133, 0.7), 0 0 10px rgba(246, 211, 101, 0.5); }
+            50% { box-shadow: 0 8px 20px rgba(253, 160, 133, 0.9), 0 0 20px rgba(246, 211, 101, 0.7); }
+            100% { box-shadow: 0 6px 15px rgba(253, 160, 133, 0.7), 0 0 10px rgba(246, 211, 101, 0.5); }
+        }
+    </style>
+
+    <!-- JavaScript Audio Controller -->
+    <script>
+        function toggleVibrantMusic() {
+            const audio = document.getElementById('my-hidden-audio');
+            const icon = document.getElementById('btn-icon');
+            const btn = document.getElementById('vibrant-music-btn');
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    // Change icon and style when playing
+                    icon.innerHTML = "❚❚"; // Pause symbol
+                    icon.style.transform = "scale(0.9)";
+                    btn.style.background = "linear-gradient(135deg, #43cea2 0%, #185a9d 100%)";
+                    btn.style.animation = "none"; // Stop pulsing when playing
+                    btn.style.boxShadow = "0 6px 15px rgba(67, 206, 162, 0.6)";
+                }).catch(error => {
+                    console.log("Play error:", error);
+                    alert("Pehli baar click karne par load hone mein time lag sakta hai!");
+                });
+            } else {
+                audio.pause();
+                // Reset icon and style when paused
+                icon.innerHTML = "♪"; // Music Note
+                icon.style.transform = "scale(1)";
+                btn.style.background = "linear-gradient(135deg, #f6d365 0%, #fda085 50%, #f68787 100%)";
+                btn.style.animation = "pulse-glow 3s infinite"; // Resume pulsing
+                btn.style.boxShadow = "0 6px 15px rgba(253, 160, 133, 0.7)";
+            }
+        }
+    </script>
+</div>
 </body>
 </html>
